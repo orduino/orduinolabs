@@ -1,0 +1,30 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^i(\d+)[-/].*[-/]j(\d+)-.*$ index\.php?id=$1-$2&%{QUERY_STRING} [L]
+RewriteRule ^i(\d+)[-/]j(\d+)[-/].*$ index\.php?id=$1-$2&%{QUERY_STRING} [L]
+RewriteRule ^j(\d+)[-/].*[-/]i(\d+)[-/].*$ index\.php?id=$2-$1&%{QUERY_STRING} [L]
+RewriteRule ^j(\d+)[-/]i(\d+)[-/].*$ index\.php?id=$2-$1&%{QUERY_STRING} [L]
+RewriteRule ^.*[-/]j(\d+)[-/]i(\d+)[-/].*$ index\.php?id=$2-$1&%{QUERY_STRING} [L]
+RewriteRule ^.*[-/]j(\d+)[-/].*[-/]i(\d+)[-/].*$ index\.php?id=$2-$1&%{QUERY_STRING} [L]
+RewriteRule ^.*[-/]i(\d+)[-/].*[-/]j(\d+)[-/].*$ index\.php?id=$1-$2&%{QUERY_STRING} [L]
+RewriteRule ^.*[-/]i(\d+)[-/]j(\d+)[-/].*$ index\.php?id=$1-$2&%{QUERY_STRING} [L]
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
